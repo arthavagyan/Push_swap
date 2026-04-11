@@ -5,4 +5,4 @@ parsing.c -> 1.parsing funkciana himnakany
 2. tmp-in pahuma ir mej spliti returny
 3. ischar funkcian stuguma tar ka mejy te voch
 4. atoin sovorakan atoia uxxaki pashtpanvaca int-i overflow lineluc:
-
+5.error.c -> errorneri veradardz ev spliti free

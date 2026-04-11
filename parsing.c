@@ -51,29 +51,29 @@ static long	ft_atoi(const char *str)
 
 void	parsing(t_arg	*args)
 {
-	int	j;
-	int	i;
+	int		j;
+	int		i;
 	long	nb;
-	char	**tmp;
 
 	i = 1;
 	while (i < args->argc)
 	{
 		j = 0;
-		tmp = ft_split(args->argv[i], ' ');
-		while (tmp[j])
+		args->split_tmp = ft_split(args->argv[i], ' ');
+		while (args->split_tmp[j])
 		{
-			if (ischar(tmp[j]))
-				return ;//error + free
+			if (ischar(args->split_tmp[j]))
+				error_split(args);
 			else
 			{
-				nb = ft_atoi(tmp[j]);
+				nb = ft_atoi(args->split_tmp[j]);
 				if (nb == 2147483647)
-					return ;//error + free
+					error_split(args);
 				printf("%ld", nb);
 			}
 			j++;
 		}
 		i++;
+		free_split(args);
 	}
 }

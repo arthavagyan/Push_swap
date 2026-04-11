@@ -1,34 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: artavagy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/08 22:27:56 by artavagy          #+#    #+#             */
-/*   Updated: 2026/04/09 20:53:16 by artavagy         ###   ########.fr       */
+/*   Created: 2026/04/09 19:08:53 by artavagy          #+#    #+#             */
+/*   Updated: 2026/04/09 22:52:13 by artavagy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "push_swap.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <stdio.h>
-# include <stdint.h>
-
-typedef struct a_data
+void	error_split(t_arg *args)
 {
-	int		argc;
-	char	**argv;
-	char	**split_tmp;
-}		t_arg;
+	free_split(args);
+	write(2, "Error\n", 6);
+	exit(1);
+}
 
-void	error_split(t_arg *args);
-void	free_split(t_arg *args);
-void	parsing(t_arg *args);
+void	free_split(t_arg *args)
+{
+	int	i;
 
-size_t	ft_strlcpy(char dst[], const char src[], size_t size);
-
-char	**ft_split(char const *s, char c);
-#endif
+	i = 0;
+	while (args->split_tmp[i])
+	{
+		free(args->split_tmp[i]);
+		i++;
+	}
+	free(args->split_tmp);
+}
