@@ -23,7 +23,7 @@ typedef struct a_data
 	char	**argv;
 	char	**split_tmp;
 	char	**old_str;
-	char	**args_str;
+	char	**new_str;
 }		t_arg;
 /*
 typedef struct s_list

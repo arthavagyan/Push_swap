@@ -12,6 +12,52 @@
 #include "push_swap.h"
 #include <stdio.h>
 
+static size_t	ft_arrlen(char **s)
+{
+	size_t	i;
+
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
+}
+
+static void	zero_fill_struct(t_arg *args)
+{
+	args->split_tmp = NULL;
+	args->new_str = NULL;
+	args->old_str = NULL;
+}
+
+static void	split_all_args(t_arg *args)
+{
+	size_t	i;
+	size_t	j;
+
+	i = 1;
+	while (i < args->argc)
+	{
+		args->split_tmp = ft_split(args->argv[i], ' ');
+		args->new_str = ft_calloc(ft_arrlen(args->split_tmp)
+				+ ft_arrlen(args->old_str) + 1, 1);
+		
+ 		// j = 0;
+		// while (args->split_tmp[j])
+		// {
+		// 	printf("%s\n", args->split_tmp[j]);
+		// 	j++;
+		// }
+		printf("%ld\n", ft_arrlen(args->split_tmp));
+		i++;
+	}
+}
+
+void	parsing(t_arg *args)
+{
+	zero_fill_struct(args);
+	split_all_args(args);
+}
+
 int	main(int argc, char *argv[])
 {
 	t_arg	args;
@@ -22,17 +68,7 @@ int	main(int argc, char *argv[])
 		return (0);
 	parsing(&args);
 }
-
-static size_t	ft_arrlen(char **s)
-{
-	size_t	i;
-
-	i = 0;
-	while (s[i][0])
-		i++;
-	return (i);
-}
-
+/*
 static void	split_all_args(t_arg *args)
 {
 	int	i;
@@ -89,7 +125,7 @@ void	parsing(t_arg *args)
 		i++;
 	}
 }
-
+*/
 /*
 void	parsing(t_arg	*args, t_stack	*stack)
 {
