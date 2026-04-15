@@ -1,8 +1,10 @@
-ft_split.c -> sovorakan split libftic avelacvaca mejy callocy
-ft_strlcpy.c -> petq er spliti mej
-push_swap.c -> main funkciana mejy vorov poxancvuma argc argv (argc argvin pahpanvaca arandzin structi mej hest hasaneliutyan hamar)
-parsing.c -> 1.parsing funkciana himnakany
-2. tmp-in pahuma ir mej spliti returny
-3. ischar funkcian stuguma tar ka mejy te voch
-4. atoin sovorakan atoia uxxaki pashtpanvaca int-i overflow lineluc:
-5.error.c -> errorneri veradardz ev spliti free
+TODO
+
+1) Disorder metric +
+2) strategi flags logic
+3) bench flag logic
+4) sorting algorithms
+	4.1 simple
+	4.2 medium
+	4.3 complex
+	4.4 adaptive

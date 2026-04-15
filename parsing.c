@@ -6,7 +6,7 @@
 /*   By: artavagy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/09 19:08:53 by artavagy          #+#    #+#             */
-/*   Updated: 2026/04/09 22:52:13 by artavagy         ###   ########.fr       */
+/*   Updated: 2026/04/15 13:12:20 by tyeghiaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -49,7 +49,7 @@ static long	ft_atoi(const char *str)
 	return (result * sign);
 }
 
-void	parsing(t_arg	*args)
+void	parsing(t_arg	*args, t_stack	*stack)
 {
 	int		j;
 	int		i;
@@ -69,7 +69,10 @@ void	parsing(t_arg	*args)
 				nb = ft_atoi(args->split_tmp[j]);
 				if (nb == 2147483647)
 					error_split(args);
-				printf("%ld", nb);
+				if (duplicate_numbers(stack, (int)nb))
+					error_split(args);
+				else
+					push_stack(stack, nb);
 			}
 			j++;
 		}

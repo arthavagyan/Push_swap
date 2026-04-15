@@ -1,32 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   helper_functions.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: artavagy <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: tyeghiaz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/11 20:02:36 by artavagy          #+#    #+#             */
-/*   Updated: 2026/04/11 20:02:46 by artavagy         ###   ########.fr       */
+/*   Created: 2026/04/14 19:57:23 by tyeghiaz          #+#    #+#             */
+/*   Updated: 2026/04/15 13:07:12 by tyeghiaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "push_swap.h"
 
-void	error_split(t_arg *args)
+int	duplicate_numbers(t_stack *stack, int value)
 {
-	free_split(args);
-	write(2, "Error\n", 6);
-	exit(1);
-}
+	t_node	*current;
 
-void	free_split(t_arg *args)
-{
-	int	i;
-
-	i = 0;
-	while (args->split_tmp[i])
+	current = stack->head;
+	while (current != NULL)
 	{
-		free(args->split_tmp[i]);
-		i++;
+		if (current->value == value)
+			return (1);
+		current = current->next;
 	}
-	free(args->split_tmp);
+	return (0);
 }
