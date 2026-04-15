@@ -10,45 +10,87 @@
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
+#include <stdio.h>
 
-static int	ischar(char *str)
+int	main(int argc, char *argv[])
 {
-	if (*str == '-' || *str == '+')
-		str++;
-	if (!str)
-		return (1);
-	while (*str)
-	{
-		if (*str < '0' || *str > '9')
-			return (1);
-		str++;
-	}
-	return (0);
+	t_arg	args;
+
+	args.argc = argc;
+	args.argv = argv;
+	if (args.argc < 2)
+		return (0);
+	parsing(&args);
 }
 
-static long	ft_atoi(const char *str)
+static size_t	ft_arrlen(char **s)
 {
-	long	result;
-	int		sign;
+	size_t	i;
 
-	result = 0;
-	sign = 1;
-	if (*str == '-' || *str == '+')
-	{
-		if (*str == '-')
-			sign = -1;
-		str++;
-	}
-	while (*str)
-	{
-		result = (result * 10) + (*str - '0');
-		if ((result * sign) > 2147483647 || (result * sign) < -2147483648)
-			return (2147483647);
-		str++;
-	}
-	return (result * sign);
+	i = 0;
+	while (s[i][0])
+		i++;
+	return (i);
 }
 
+static void	split_all_args(t_arg *args)
+{
+	int	i;
+	int	j;
+	int k;
+
+	i = 2;
+	j = 0;
+	k = 0;
+	while (i < args->argc)
+	{
+		args->split_tmp = ft_split(args->argv[i], ' ');
+		if (!args->split_tmp)
+			free_split(args);
+				while (args->args_str[i])
+	{
+		printf("%s\n", args->args_str[i]);
+		i++;
+	}
+		args->args_str = ft_calloc(ft_arrlen(args->old_str)
+				+ ft_arrlen(args->split_tmp) + 1, 1);
+		while (args->old_str[k])
+		{
+			args->args_str[j] = args->old_str[k];
+			j++;
+			k++;
+		}
+		while (args->split_tmp[k])
+		{
+			args->args_str[j] = args->split_tmp[k];
+			j++;
+			k++;
+		}
+		i++;
+	}
+}
+
+static void	zero_fill_struct(t_arg *args)
+{
+	args->args_str = NULL;
+	args->old_str = NULL;
+}
+
+void	parsing(t_arg *args)
+{
+	int	i;
+
+	i = 0;
+	zero_fill_struct(args);
+	split_all_args(args);
+	while (args->args_str[i])
+	{
+		printf("%s\n", args->args_str[i]);
+		i++;
+	}
+}
+
+/*
 void	parsing(t_arg	*args, t_stack	*stack)
 {
 	int		j;
@@ -80,3 +122,4 @@ void	parsing(t_arg	*args, t_stack	*stack)
 		free_split(args);
 	}
 }
+*/

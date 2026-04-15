@@ -48,7 +48,7 @@ static size_t	len_w(char const *s, char c)
 	return (len);
 }
 
-static void	*ft_calloc(size_t nmemb, size_t size)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
 	void	*ptr;
 	size_t	i;
