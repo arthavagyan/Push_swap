@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: artavagy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/28 16:37:09 by artavagy          #+#    #+#             */
-/*   Updated: 2026/04/09 20:54:51 by artavagy         ###   ########.fr       */
+/*   Created: 2026/02/02 16:08:28 by artavagy          #+#    #+#             */
+/*   Updated: 2026/04/01 18:38:52 by artavagy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -38,4 +38,15 @@ size_t	ft_strlcpy(char dst[], const char src[], size_t size)
 		dst[i] = '\0';
 	}
 	return (len);
+}
+
+char	*ft_strdup(const char *s)
+{
+	char	*s_copy;
+
+	s_copy = (char *)malloc(ft_strlen(s) + 1);
+	if (!s_copy)
+		return (NULL);
+	ft_strlcpy(s_copy, s, ft_strlen(s) + 1);
+	return (s_copy);
 }

@@ -10,8 +10,131 @@
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
-#include <stdio.h>
 
+static int	ischar(char *str, t_args *args)
+{
+	int	i;
+
+	i = 0;
+	if (!str || !str[0])
+		return (1);
+	if (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-' && str[i + 1] && str[i + 1] == '-')
+			return (activate_flags(str, args));
+		i++;
+	}
+	if (!str[i])
+		return (1);
+	while (str[i])
+	{
+		if (str[i] < '0' || str[i] > '9')
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+static void	check_args_push(t_args *args)
+{
+	int	i;
+	int	nb;
+
+	i = 0;
+	while (args->args_str[i])
+	{
+		if (ischar(args->args_str[i], args) == 1)
+			error_exit(1, args);
+		else if (ischar(args->args_str[i], args) == 0)
+		{
+			nb = ft_atoi(args->args_str[i]);
+			if (nb == 2147483647)
+				error_exit(1, args);
+			if (duplicate_numbers(&args->a, nb))
+				error_exit(2, args);
+			push_stack(&args->a, nb);
+		}
+		i++;
+	}
+	free_double_pointer(args->args_str);
+}
+
+static void	arr_len_counter(t_args *args)
+{
+	int	i;
+	int	j;
+
+	args->total_arr_len = 0;
+	i = 1;
+	while (i < args->argc)
+	{
+		j = 0;
+		while (args->argv[i][j])
+		{
+			while (args->argv[i][j] == ' ')
+				j++;
+			if (args->argv[i][j])
+				args->total_arr_len++;
+			while (args->argv[i][j] && args->argv[i][j] != ' ')
+				j++;
+		}
+		i++;
+	}
+}
+
+static void	fill_args(t_args *args)
+{
+	int		i;
+	int		j;
+	int		k;
+	char	**tmp;
+
+	i = 1;
+	k = 0;
+	while (i < args->argc)
+	{
+		tmp = ft_split(args->argv[i], ' ');
+		if (!tmp)
+			error_exit(1, args);
+		j = 0;
+		while (tmp[j])
+		{
+			args->args_str[k] = ft_strdup(tmp[j]);
+			if (!args->args_str[k])
+				error_exit(1, args);
+			j++;
+			k++;
+		}
+		free_double_pointer(tmp);
+		i++;
+	}
+}
+
+void	parsing(t_args *args)
+{
+	int	i;
+
+	i = 0;
+	arr_len_counter(args);
+	if (args->total_arr_len == 0)
+		error_exit(0, args);
+	args->args_str = ft_calloc(args->total_arr_len + 1, 8);
+	if (!(args->args_str))
+		error_exit(0, args);
+	fill_args(args);
+	check_args_push(args);
+}
+// int	main(int argc, char *argv[])
+// {
+// 	t_args	args;
+
+// 	args.argc = argc;
+// 	args.argv = argv;
+// 	if (args.argc < 2)
+// 		return (0);
+// 	parsing(&args);
+// }
+/*
 static size_t	ft_arrlen(char **s)
 {
 	size_t	i;
@@ -68,6 +191,7 @@ int	main(int argc, char *argv[])
 		return (0);
 	parsing(&args);
 }
+*/
 /*
 static void	split_all_args(t_arg *args)
 {

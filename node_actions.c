@@ -9,7 +9,6 @@
 /*   Updated: 2026/04/15 13:20:54 by tyeghiaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "push_swap.h"
 
 t_node	*ft_lstnew(int value)
@@ -24,9 +23,18 @@ t_node	*ft_lstnew(int value)
 	return (new_node);
 }
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+t_node	*ft_lstlast(t_node *lst)
 {
-	t_list	*last;
+	if (!lst)
+		return (NULL);
+	while (lst->next)
+		lst = lst->next;
+	return (lst);
+}
+
+void	ft_lstadd_back(t_node **lst, t_node *new)
+{
+	t_node	*last;
 
 	if (!lst || !new)
 		return ;
@@ -46,6 +54,9 @@ void	push_stack(t_stack *stack, int value)
 	new = ft_lstnew(value);
 	if (!new)
 		return ;
-	ft_lstadd_front(&stack->head, new);
+	ft_lstadd_back(&stack->head, new);
 	stack->size++;
 }
+/*ft_lstadd_front" poxelem "ft_lstadd_back" line 49*/
+/*avelacrelem lstlast chkar fayleri mejline 53-60*/
+//bolor t_list anunnery poxvela t_node

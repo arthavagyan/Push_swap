@@ -11,22 +11,23 @@
 /* ************************************************************************** */
 #include "push_swap.h"
 
-void	error_split(t_arg *args)
+void	error_exit(int i, t_args *args)
 {
-	free_split(args);
+	if (i == 1)
+		free_double_pointer(args->args_str);
 	write(2, "Error\n", 6);
 	exit(1);
 }
 
-void	free_split(t_arg *args)
+void	free_double_pointer(char **str)
 {
 	int	i;
 
 	i = 0;
-	while (args->split_tmp[i])
+	while (str[i])
 	{
-		free(args->split_tmp[i]);
+		free(str[i]);
 		i++;
 	}
-	free(args->split_tmp);
+	free(str);
 }
