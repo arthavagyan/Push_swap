@@ -33,3 +33,4 @@ int	main(int argc, char *argv[])
 	printf("adaptive:%d\n", args.adaptive);
 	args.disorder = compute_disorder(&args.a);
 }
+   

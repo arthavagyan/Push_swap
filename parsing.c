@@ -63,6 +63,7 @@ static void	arr_len_counter(t_args *args)
 {
 	int	i;
 	int	j;
+	int len;
 
 	args->total_arr_len = 0;
 	i = 1;
