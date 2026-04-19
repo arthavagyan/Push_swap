@@ -53,9 +53,10 @@ void	error_exit(int i, t_args *args);
 void	free_double_pointer(char **str);
 void	reverse_rotate(t_stack *stack);
 void	zero_fill_struct(t_args *args);
-void	rotate(t_stack *stack);
+void	rotate(t_stack *stack); 
 void	parsing(t_args *args);
 void	swap(t_stack *stack);
+void	selection(t_stack *a, t_stack *b);
 
 
 size_t	ft_strlcpy(char dst[], const char src[], size_t size);
