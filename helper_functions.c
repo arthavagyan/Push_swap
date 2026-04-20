@@ -28,11 +28,20 @@ int	duplicate_numbers(t_stack *stack, int value)
 int	activate_flags(char *str, t_args *args)
 {
 	if (!ft_strncmp(str, "--simple", 9))
+	{
 		args->simple = 1;
+		args->adaptive  = 0;
+	}
 	else if (!ft_strncmp(str, "--medium", 9))
+	{
 		args->medium = 1;
+		args->adaptive  = 0;
+	}	
 	else if (!ft_strncmp(str, "--complex", 10))
+	{
 		args->complex = 1;
+		args->adaptive  = 0;
+	}	
 	else if (!ft_strncmp(str, "--adaptive", 11))
 		args->adaptive = 1;
 	else if (!ft_strncmp(str, "--bench", 8))
@@ -51,6 +60,6 @@ void	zero_fill_struct(t_args *args)
 	args->simple = 0;
 	args->medium = 0;
 	args->complex = 0;
-	args->adaptive = 0;
+	args->adaptive = 1;
 	args->bench = 0;
 }

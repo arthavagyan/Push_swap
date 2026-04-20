@@ -26,6 +26,7 @@ typedef struct s_list
 typedef struct l_list
 {
 	t_node	*head;
+	char	name;
 	int		size;
 }		t_stack;
 
@@ -49,15 +50,18 @@ void	push(t_stack *src_stack, t_stack *dst_stack);
 void	ft_lstadd_back(t_node **lst, t_node *new);
 void	*ft_calloc(size_t nmemb, size_t size);
 void	push_stack(t_stack *stack, int value);
+void    radix_sort(t_stack *a, t_stack *b);
+void    chunk_sort(t_stack *a, t_stack *b);
+void	selection(t_stack *a, t_stack *b);
 void	error_exit(int i, t_args *args);
 void	free_double_pointer(char **str);
 void	reverse_rotate(t_stack *stack);
 void	zero_fill_struct(t_args *args);
-void	rotate(t_stack *stack); 
+void	check_args_push(t_args *args);
+void	free_list(t_node *head);
+void	rotate(t_stack *stack);
 void	parsing(t_args *args);
 void	swap(t_stack *stack);
-void	selection(t_stack *a, t_stack *b);
-
 
 size_t	ft_strlcpy(char dst[], const char src[], size_t size);
 size_t	ft_strlen(const char *s);
