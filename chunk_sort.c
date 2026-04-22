@@ -6,13 +6,12 @@
 /*   By: artavagy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 20:53:33 by artavagy          #+#    #+#             */
-/*   Updated: 2026/04/20 20:53:35 by artavagy         ###   ########.fr       */
+/*   Updated: 2026/04/21 15:48:00 by artavagy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
 
-void    chunk_sort(t_stack *a, t_stack *b)
+void	chunk_sort(t_stack *a, t_stack *b)
 {
-    return ;
+	return ;
 }
-

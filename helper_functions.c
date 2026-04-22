@@ -30,18 +30,18 @@ int	activate_flags(char *str, t_args *args)
 	if (!ft_strncmp(str, "--simple", 9))
 	{
 		args->simple = 1;
-		args->adaptive  = 0;
+		args->adaptive = 0;
 	}
 	else if (!ft_strncmp(str, "--medium", 9))
 	{
 		args->medium = 1;
-		args->adaptive  = 0;
-	}	
+		args->adaptive = 0;
+	}
 	else if (!ft_strncmp(str, "--complex", 10))
 	{
 		args->complex = 1;
-		args->adaptive  = 0;
-	}	
+		args->adaptive = 0;
+	}
 	else if (!ft_strncmp(str, "--adaptive", 11))
 		args->adaptive = 1;
 	else if (!ft_strncmp(str, "--bench", 8))
@@ -49,6 +49,21 @@ int	activate_flags(char *str, t_args *args)
 	else
 		return (1);
 	return (2);
+}
+
+static void	zero_fill_benchmark(t_args *args)
+{
+	args->benchmark.sa = 0;
+	args->benchmark.sb = 0;
+	args->benchmark.ss = 0;
+	args->benchmark.pa = 0;
+	args->benchmark.pb = 0;
+	args->benchmark.ra = 0;
+	args->benchmark.rb = 0;
+	args->benchmark.rr = 0;
+	args->benchmark.rra = 0;
+	args->benchmark.rrb = 0;
+	args->benchmark.rrr = 0;
 }
 
 void	zero_fill_struct(t_args *args)
@@ -62,4 +77,21 @@ void	zero_fill_struct(t_args *args)
 	args->complex = 0;
 	args->adaptive = 1;
 	args->bench = 0;
+	zero_fill_benchmark(args);
+}
+
+int	is_sorted(t_stack *stack)
+{
+	t_node	*cur;
+
+	if (stack == NULL || stack->size < 2)
+		return (1);
+	cur = stack->head;
+	while (cur->next)
+	{
+		if (cur->value > cur->next->value)
+			return (0);
+		cur = cur->next;
+	}
+	return (1);
 }

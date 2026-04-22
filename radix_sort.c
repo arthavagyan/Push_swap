@@ -6,13 +6,12 @@
 /*   By: artavagy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/20 20:53:45 by artavagy          #+#    #+#             */
-/*   Updated: 2026/04/20 20:53:46 by artavagy         ###   ########.fr       */
+/*   Updated: 2026/04/21 15:48:28 by artavagy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
 
-void    radix_sort(t_stack *a, t_stack *b)
+void	radix_sort(t_stack *a, t_stack *b)
 {
-    return ;
+	return ;
 }
-

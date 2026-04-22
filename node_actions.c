@@ -20,6 +20,7 @@ t_node	*ft_lstnew(int value)
 		return (NULL);
 	new_node->value = value;
 	new_node->next = NULL;
+	new_node->index = -1;
 	return (new_node);
 }
 
@@ -57,6 +58,3 @@ void	push_stack(t_stack *stack, int value)
 	ft_lstadd_back(&stack->head, new);
 	stack->size++;
 }
-/*ft_lstadd_front" poxelem "ft_lstadd_back" line 49*/
-/*avelacrelem lstlast chkar fayleri mejline 53-60*/
-//bolor t_list anunnery poxvela t_node

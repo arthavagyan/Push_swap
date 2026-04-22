@@ -14,9 +14,9 @@
 
 static int	find_min(t_node *head)
 {
-	int	min_number_index;
-	int	min_number;
-	int	current_index;
+	int		min_number_index;
+	int		min_number;
+	int		current_index;
 	t_node	*before_head;
 
 	before_head = head;
@@ -37,40 +37,48 @@ static int	find_min(t_node *head)
 	return (min_number_index);
 }
 
-static void	find_operation(int min_index,t_stack *a)
+static void	find_operation(int min_index, t_args *args)
 {
 	int	i;
 
-	if (min_index <= a->size/2)
+	if (min_index <= args->a.size / 2)
 	{
 		i = 0;
-		while(i < min_index)
+		while (i < min_index)
 		{
-			rotate(a);
+			rotate(&args->a);
+			bench_or_write("ra", &args->benchmark.ra, args->bench);
 			i++;
 		}
 	}
 	else
 	{
 		i = 0;
-		while(i < (a->size - min_index))
+		while (i < (args->a.size - min_index))
 		{
-			reverse_rotate(a);
+			reverse_rotate(&args->a);
+			bench_or_write("rra", &args->benchmark.rra, args->bench);
 			i++;
 		}
 	}
 }
 
-void	selection(t_stack *a, t_stack *b)
+void	selection(t_args *args)
 {
 	int	min_index;
 
-	while(a->size > 0)
+	args->simple = 1;
+	while (args->a.size > 0)
 	{
-		min_index = find_min(a->head);
-		find_operation(min_index, a);
-		push(a, b);
+		printf("%d\n", min_index);
+		min_index = find_min(args->a.head);
+		find_operation(min_index, args);
+		push(&args->a, &args->b);
+		bench_or_write("pb", &args->benchmark.pb, args->bench);
 	}
-	while(b->size > 0)
-		push(b, a);
+	while (args->b.size > 0)
+	{
+		push(&args->b, &args->a);
+		bench_or_write("pa", &args->benchmark.pa, args->bench);
+	}
 }
