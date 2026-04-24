@@ -104,43 +104,9 @@ int	main(int argc, char *argv[])
 		return (0);
 	assign_index(args.a.head);
 	args.disorder = compute_disorder(&args.a);
-	//-----Print Flags, disorder, size, before sort list----------
-	printf("simple:%d\n", args.simple);
-	printf("complex:%d\n", args.complex);
-	printf("medium:%d\n", args.medium);
-	printf("bench:%d\n", args.bench);
-	printf("adaptive:%d\n", args.adaptive);
-	printf("disorder:%f\n", args.disorder);
-	printf("size:%d\n", args.a.size);
-	old_head = args.a.head;
-	while (args.a.head)
-	{
-		printf("|before sort:|%d\n", args.a.head->value);
-		printf("|index:|%d\n", args.a.head->index);
-		args.a.head = args.a.head->next;
-	}
-	args.a.head = old_head;
-	//------------------------------------------------------
 	choice_sort(&args);
 	if (args.bench)
 		print_bench(&args);
-	//----------------Print after sort list--------------
-	printf("simple:%d\n", args.simple);
-	printf("complex:%d\n", args.complex);
-	printf("medium:%d\n", args.medium);
-	printf("bench:%d\n", args.bench);
-	printf("adaptive:%d\n", args.adaptive);
-	printf("disorder:%f\n", args.disorder);
-	printf("size:%d\n", args.a.size);
-	old_head = args.a.head;
-	while (args.a.head)
-	{
-		printf("|after sort:|%d\n", args.a.head->value);
-		printf("|index:|%d\n", args.a.head->index);
-		args.a.head = args.a.head->next;
-	}
-	args.a.head = old_head;
-	//--------------------------------------------------
 	free_list(args.a.head);
 }
 

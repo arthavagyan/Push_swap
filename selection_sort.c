@@ -70,7 +70,6 @@ void	selection(t_args *args)
 	args->simple = 1;
 	while (args->a.size > 0)
 	{
-		printf("%d\n", min_index);
 		min_index = find_min(args->a.head);
 		find_operation(min_index, args);
 		push(&args->a, &args->b);
