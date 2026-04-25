@@ -90,7 +90,7 @@ static void	choice_sort(t_args *args)
 
 int	main(int argc, char *argv[])
 {
-	t_node	*old_head;
+	//t_node	*old_head;
 	t_args	args;
 
 	args.argc = argc;
@@ -103,11 +103,24 @@ int	main(int argc, char *argv[])
 	if (is_sorted(&args.a))
 		return (0);
 	assign_index(args.a.head);
-	args.disorder = compute_disorder(&args.a);
-	choice_sort(&args);
+	if (args.a.size <= 5)
+	{
+		if (args.a.size == 2)
+			sort_2(&args);
+		else if (args.a.size == 3)
+			sort_3(&args);
+		else
+			sort_4_5(&args);
+	}
+	else
+	{
+		args.disorder = compute_disorder(&args.a);
+		choice_sort(&args);
+	}
 	if (args.bench)
 		print_bench(&args);
 	free_list(args.a.head);
+	return (0);
 }
 
 /*

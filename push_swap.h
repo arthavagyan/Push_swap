@@ -80,6 +80,15 @@ void	free_list(t_node *head);
 void	rotate(t_stack *stack);
 void	parsing(t_args *args);
 void	swap(t_stack *stack);
+void	sort_2(t_args *args);
+void	sort_3(t_args *args);
+void	sort_4_5(t_args *args);
+void	find_operation(int min_index, t_args *args);
+void	case1(t_args *args);
+void	case2(t_args *args);
+void	case3(t_args *args);
+void	case4(t_args *args);
+void	case5(t_args *args);
 
 size_t	ft_strlcpy(char dst[], const char src[], size_t size);
 size_t	ft_strlen(const char *s);
@@ -94,6 +103,7 @@ int		duplicate_numbers(t_stack *stack, int value);
 int		activate_flags(char *str, t_args *args);
 int		is_sorted(t_stack *stack);
 int		ft_atoi(const char *str);
+int		find_min(t_node *head);
 
 double	compute_disorder(t_stack *stack);
 #endif

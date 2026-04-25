@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-static int	find_min(t_node *head)
+int	find_min(t_node *head)
 {
 	int		min_number_index;
 	int		min_number;
@@ -37,7 +37,7 @@ static int	find_min(t_node *head)
 	return (min_number_index);
 }
 
-static void	find_operation(int min_index, t_args *args)
+void	find_operation(int min_index, t_args *args)
 {
 	int	i;
 
