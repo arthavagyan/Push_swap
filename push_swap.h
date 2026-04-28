@@ -89,6 +89,7 @@ void	case2(t_args *args);
 void	case3(t_args *args);
 void	case4(t_args *args);
 void	case5(t_args *args);
+void	radix(t_args *args);
 
 size_t	ft_strlcpy(char dst[], const char src[], size_t size);
 size_t	ft_strlen(const char *s);
@@ -103,7 +104,7 @@ int		duplicate_numbers(t_stack *stack, int value);
 int		activate_flags(char *str, t_args *args);
 int		is_sorted(t_stack *stack);
 int		ft_atoi(const char *str);
-int		find_min(t_node *head);
+int		find_min_index(t_node *head);
 
 double	compute_disorder(t_stack *stack);
 #endif

@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-int	find_min(t_node *head)
+int	find_min_index(t_node *head)
 {
 	int		min_number_index;
 	int		min_number;
@@ -66,18 +66,27 @@ void	find_operation(int min_index, t_args *args)
 void	selection(t_args *args)
 {
 	int	min_index;
-
-	args->simple = 1;
-	while (args->a.size > 0)
+	
+	if (args->a.size == 2)
+		sort_2(args);
+	else if (args->a.size == 3)
+		sort_3(args);
+	else if (args->a.size == 4 || args->a.size == 5)
+		sort_4_5(args);
+	else
 	{
-		min_index = find_min(args->a.head);
-		find_operation(min_index, args);
-		push(&args->a, &args->b);
-		bench_or_write("pb", &args->benchmark.pb, args->bench);
-	}
-	while (args->b.size > 0)
-	{
-		push(&args->b, &args->a);
-		bench_or_write("pa", &args->benchmark.pa, args->bench);
+		args->simple = 1;
+		while (args->a.size > 0)
+		{
+			min_index = find_min_index(args->a.head);
+			find_operation(min_index, args);
+			push(&args->a, &args->b);
+			bench_or_write("pb", &args->benchmark.pb, args->bench);
+		}
+		while (args->b.size > 0)
+		{
+			push(&args->b, &args->a);
+			bench_or_write("pa", &args->benchmark.pa, args->bench);
+		}
 	}
 }

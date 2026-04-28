@@ -37,7 +37,7 @@ void	sort_4_5(t_args *args)
 	
 	while (args->a.size > 3)
 	{
-		min_index = find_min(args->a.head);
+		min_index = find_min_index(args->a.head);
 		find_operation(min_index, args);
 		push(&args->a, &args->b);
 		bench_or_write("pb", &args->benchmark.pb, args->bench);

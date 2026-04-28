@@ -61,7 +61,7 @@ void	bench_or_write(char *str, int *operation, int bench)
 
 static void	choice_sort(t_args *args)
 {
-	int	flag_count;
+	int	flag_count; // where do we use this?
 
 	flag_count = 0;
 	if (args->complex + args->medium + args->simple + args->adaptive >= 2)
@@ -78,14 +78,14 @@ static void	choice_sort(t_args *args)
 		else if (args->disorder >= 0.2 && args->disorder < 0.5)
 			chunk_sort(&args->a, &args->b);
 		else
-			radix_sort(&args->a, &args->b);
+			radix(args);
 	}
 	else if (args->simple)
 		selection(args);
 	else if (args->medium)
 		chunk_sort(&args->a, &args->b);
 	else if (args->complex)
-		radix_sort(&args->a, &args->b);
+		radix(args);
 }
 
 int	main(int argc, char *argv[])
@@ -103,20 +103,8 @@ int	main(int argc, char *argv[])
 	if (is_sorted(&args.a))
 		return (0);
 	assign_index(args.a.head);
-	if (args.a.size <= 5)
-	{
-		if (args.a.size == 2)
-			sort_2(&args);
-		else if (args.a.size == 3)
-			sort_3(&args);
-		else
-			sort_4_5(&args);
-	}
-	else
-	{
-		args.disorder = compute_disorder(&args.a);
-		choice_sort(&args);
-	}
+	args.disorder = compute_disorder(&args.a);
+	choice_sort(&args);
 	if (args.bench)
 		print_bench(&args);
 	free_list(args.a.head);
