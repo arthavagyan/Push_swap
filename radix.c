@@ -41,20 +41,11 @@ void	radix(t_args *args)
 	{
 		i = 0;
 		size = args->a.size;
+		if (is_sorted(&(args->a)))
+			break;
 		while(i < size)
 		{
 			find_operation_bit(args, bit);
-/*			if ((args->a.head->index >> bit) & 1)
-			{
-				rotate(&args->a);
-				bench_or_write("ra", &args->benchmark.ra, args->bench);
-			}
-			else
-			{
-				push(&args->a, &args->b);
-				bench_or_write("pb", &args->benchmark.pb, args->bench);
-			}
-*/
 			i++;
 		}
 		while (args->b.size)
