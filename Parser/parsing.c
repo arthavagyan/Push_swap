@@ -9,13 +9,12 @@
 /*   Updated: 2026/04/15 13:12:20 by tyeghiaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "push_swap.h"
+#include "../push_swap.h"
 
 static void	arr_len_counter(t_args *args)
 {
 	int	i;
 	int	j;
-	int	len;
 
 	args->total_arr_len = 0;
 	i = 1;

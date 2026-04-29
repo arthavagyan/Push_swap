@@ -9,7 +9,7 @@
 /*   Updated: 2026/04/01 18:38:52 by artavagy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "push_swap.h"
+#include "../push_swap.h"
 
 size_t	ft_strlen(const char *s)
 {

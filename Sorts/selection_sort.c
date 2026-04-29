@@ -9,8 +9,7 @@
 /*   Updated: 2026/04/19 15:24:01 by tyeghiaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "push_swap.h"
+#include "../push_swap.h"
 
 int	find_min_index(t_node *head)
 {
@@ -66,16 +65,11 @@ void	find_operation(int min_index, t_args *args)
 void	selection(t_args *args)
 {
 	int	min_index;
-	
-	if (args->a.size == 2)
-		sort_2(args);
-	else if (args->a.size == 3)
-		sort_3(args);
-	else if (args->a.size == 4 || args->a.size == 5)
-		sort_4_5(args);
-	else
+
+	args->simple = 1;
+	select_small_sort(args);
+	if (!is_sorted(&args->a))
 	{
-		args->simple = 1;
 		while (args->a.size > 0)
 		{
 			min_index = find_min_index(args->a.head);

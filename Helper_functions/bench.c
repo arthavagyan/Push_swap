@@ -9,7 +9,7 @@
 /*   Updated: 2026/04/21 21:16:23 by artavagy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "push_swap.h"
+#include "../push_swap.h"
 
 static void	ft_putnbr(int n)
 {

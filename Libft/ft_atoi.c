@@ -1,17 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   radix_sort.c                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: artavagy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/20 20:53:45 by artavagy          #+#    #+#             */
-/*   Updated: 2026/04/21 15:48:28 by artavagy         ###   ########.fr       */
+/*   Created: 2026/04/09 19:08:53 by artavagy          #+#    #+#             */
+/*   Updated: 2026/04/15 13:12:20 by tyeghiaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "push_swap.h"
+#include "../push_swap.h"
 
-void	radix_sort(t_stack *a, t_stack *b)
+int	ft_atoi(const char *str)
 {
-	return ;
+	long	result;
+	int		sign;
+
+	result = 0;
+	sign = 1;
+	if (*str == '-' || *str == '+')
+	{
+		if (*str == '-')
+			sign = -1;
+		str++;
+	}
+	while (*str)
+	{
+		result = (result * 10) + (*str - '0');
+		if ((result * sign) > 2147483647 || (result * sign) < -2147483648)
+			return (2147483647);
+		str++;
+	}
+	return (result * sign);
 }

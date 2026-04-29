@@ -9,7 +9,7 @@
 /*   Updated: 2026/04/09 20:27:10 by artavagy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "push_swap.h"
+#include "../push_swap.h"
 
 static char	**free_calloc(char **res, size_t i)
 {

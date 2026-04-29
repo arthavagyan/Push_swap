@@ -9,7 +9,7 @@
 /*   Updated: 2026/04/15 13:20:54 by tyeghiaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "push_swap.h"
+#include "../push_swap.h"
 
 t_node	*ft_lstnew(int value)
 {

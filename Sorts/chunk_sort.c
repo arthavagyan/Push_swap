@@ -9,9 +9,9 @@
 /*   Updated: 2026/04/21 15:48:00 by artavagy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "push_swap.h"
+#include "../push_swap.h"
 
-void	chunk_sort(t_stack *a, t_stack *b)
+void	chunk_sort(t_args *args)
 {
 	return ;
 }

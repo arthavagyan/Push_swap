@@ -16,7 +16,7 @@
 |2| -> frees list
 |3| -> frees list and double pointer
 */
-#include "push_swap.h"
+#include "../push_swap.h"
 
 void	free_double_pointer(char **str)
 {

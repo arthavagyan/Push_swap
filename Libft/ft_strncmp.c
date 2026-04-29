@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: artavagy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/04/20 19:16:37 by artavagy          #+#    #+#             */
-/*   Updated: 2026/04/20 19:16:52 by artavagy         ###   ########.fr       */
+/*   Created: 2026/01/30 16:38:48 by artavagy          #+#    #+#             */
+/*   Updated: 2026/02/13 00:34:11 by artavagy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "push_swap.h"
+#include "../push_swap.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	void	*ptr;
 	size_t	i;
 
 	i = 0;
-	if (size != 0 && nmemb > SIZE_MAX / size)
-		return (NULL);
-	ptr = malloc(nmemb * size);
-	if (!ptr)
-		return (NULL);
-	while (i < nmemb * size)
+	while (i < n && s1[i] && s2[i])
 	{
-		((unsigned char *)ptr)[i] = 0;
+		if (s1[i] != s2[i])
+			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 		i++;
 	}
-	return (ptr);
+	if (i < n)
+		return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+	return (0);
 }
