@@ -12,10 +12,15 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 3
+# endif
+
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdint.h>
 # include <stdio.h>
+# include <fcntl.h>
 
 typedef struct s_list
 {
@@ -97,9 +102,18 @@ void	case5(t_args *args);
 
 size_t	ft_strlcpy(char dst[], const char src[], size_t size);
 size_t	ft_strlen(const char *s);
+size_t  ft_strlcat(char *dst, char *src, size_t size);
 
 char	**ft_split(char const *s, char c);
 char	*ft_strdup(const char *s);
+char    *ft_strchr( char *s, int c); 
+char    *ft_strjoin(char *s1, char *s2);
+char    *ft_substr(char *s, unsigned int start, size_t len);
+char    *ft_read_and_fill_reminder(int fd, char *reminder);
+char    *ft_extract_line(char *reminder);
+char    *ft_clean_reminder(char *reminder);
+char    *get_next_line(int fd);
+
 
 t_node	*ft_lstnew(int value);
 
