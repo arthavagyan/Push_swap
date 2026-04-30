@@ -58,6 +58,11 @@ char    *ft_read_and_fill_reminder(int fd, char *reminder)
                 }
                 buffer[read_bytes] = '\0';
                 reminder = ft_strjoin(reminder, buffer);
+		if (!reminder)
+		{
+			free(buffer);
+			free(reminder);
+		}
         }
         free(buffer);
         return (reminder);

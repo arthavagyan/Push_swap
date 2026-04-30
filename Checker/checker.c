@@ -10,9 +10,21 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
-int     main(int argc, char **argv)
+static void	read_command(t_args  *args)
+{
+	char	*line;
+
+	line = get_next_line(0);
+	while (line)
+	{
+		execute_command(line,args);
+		free(line);
+		line = get_next_line(0);
+	}
+}
+int	main(int argc, char **argv)
 {
 	t_args  args;
 
@@ -20,12 +32,13 @@ int     main(int argc, char **argv)
 	args.argv = argv;
 	zero_fill_struct(&args);
 	parsing(&args);
-	read_and_execute(&args);
+	read_command(&args);
 	check_args_push(&args);
 	if (is_sorted(&args.a) && args.b.head == NULL)
 		write (1, "OK\n", 3);
 	else
 		write (1, "KO\n", 3);
 	free_list(args.a.head);
+	free_list(args.b.head);
 	return (0);
 }

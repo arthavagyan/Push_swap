@@ -104,6 +104,6 @@ char    *ft_strjoin(char *s1, char *s2)
                 return (NULL);
         ft_strlcpy(new_string, s1, len_s1 + 1);
         ft_strlcat(new_string, s2, len_s1 + len_s2 + 1);
-        free(s1);
+//        free(s1);
         return (new_string);
 }

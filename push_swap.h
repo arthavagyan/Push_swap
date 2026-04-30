@@ -99,6 +99,8 @@ void	case2(t_args *args);
 void	case3(t_args *args);
 void	case4(t_args *args);
 void	case5(t_args *args);
+void	execute_command(char *line, t_args *args);
+
 
 size_t	ft_strlcpy(char dst[], const char src[], size_t size);
 size_t	ft_strlen(const char *s);
