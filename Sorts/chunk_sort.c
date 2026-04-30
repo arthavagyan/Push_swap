@@ -110,19 +110,22 @@ void	chunk_sort(t_args *args)
 
 	args->medium = 1;
 	select_small_sort(args);
-	i = 1;
-	while (i * i < args->a.size)
-		i++;
-	i = (i - 1) / 2;
-	if (i < 5)
-		i = 5;
-	range = args->a.size / i;
-	from_a_to_b(args, range);
-	while (args->b.head)
+	if (!is_sorted(&args->a))
 	{
-		max_pos = find_max_index(args->b.head);
-		max_to_top(args, max_pos);
-		push(&args->b, &args->a);
-		bench_or_write("pa", &args->benchmark.pa, args->bench);
+		i = 1;
+		while (i * i < args->a.size)
+			i++;
+		i = (i - 1) / 2;
+		if (i < 5)
+			i = 5;
+		range = args->a.size / i;
+		from_a_to_b(args, range);
+		while (args->b.head)
+		{
+			max_pos = find_max_index(args->b.head);
+			max_to_top(args, max_pos);
+			push(&args->b, &args->a);
+			bench_or_write("pa", &args->benchmark.pa, args->bench);
+		}
 	}
 }
