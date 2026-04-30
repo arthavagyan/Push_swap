@@ -24,14 +24,11 @@ int	main(int argc, char *argv[])
 	check_args_push(&args);
 	compute_disorder(&args);
 	assign_index(args.a.head);
-	print_result(&args, 0);
-	printf("|head value|%d\n", args.a.head->value);
 	if (is_sorted(&args.a))
 		return (free_list(args.a.head), 0);
 	choice_sort(&args);
 	if (args.bench)
 		print_bench(&args);
-	print_result(&args, 1);
 	free_list(args.a.head);
 	return (0);
 }
