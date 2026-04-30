@@ -1,6 +1,6 @@
 *This project has been created as part of the 42 curriculum by artavagy, tyeghiaz*
 
-# push_swap
+# Push_swap
 
 ---
 ## Instructions

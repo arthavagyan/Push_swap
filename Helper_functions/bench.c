@@ -99,8 +99,8 @@ void	print_bench(t_args *args)
 		if (args->simple)
 			write(1, "O(n²)\n", 8);
 		else if (args->medium)
-			write(1, "O(n√n)\n", 8);
-		else
+			write(1, "O(n√n)\n", 10);
+		else if (args->complex)
 			write(1, "O(nlogn)\n", 10);
 	}
 	else if (args->simple)

@@ -6,7 +6,7 @@
 /*   By: artavagy <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/08 22:27:56 by artavagy          #+#    #+#             */
-/*   Updated: 2026/04/15 19:07:00 by artavagy         ###   ########.fr       */
+/*   Updated: 2026/05/01 00:33:25 by artavagy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #ifndef PUSH_SWAP_H
@@ -16,7 +16,7 @@
 # include <unistd.h>
 # include <stdint.h>
 # include <stdio.h>
-# include "./GetNextLine/get_next_line.h"
+//# include "./GetNextLine/get_next_line.h"
 
 typedef struct s_list
 {
@@ -66,10 +66,10 @@ typedef struct m_data
 void	bench_or_write(char *str, int *operation, int bench);
 void	push(t_stack *src_stack, t_stack *dst_stack);
 void	find_operation(int min_index, t_args *args);
+void	execute_command(char *line, t_args *args);
 void	ft_lstadd_back(t_node **lst, t_node *new);
 void	*ft_calloc(size_t nmemb, size_t size);
 void	push_stack(t_stack *stack, int value);
-void	print_result(t_args *args, int i);
 void	error_exit(int i, t_args *args);
 void	free_double_pointer(char **str);
 void	select_small_sort(t_args *args);
@@ -95,17 +95,14 @@ void	case2(t_args *args);
 void	case3(t_args *args);
 void	case4(t_args *args);
 void	case5(t_args *args);
-void	execute_command(char *line, t_args *args);
-
 
 size_t	ft_strlcpy(char dst[], const char src[], size_t size);
 size_t	ft_strlen(const char *s);
 
 char	**ft_split(char const *s, char c);
 char	*ft_strdup(const char *s);
-char    *get_next_line(int fd);
-char    *ft_clean_reminder(char *reminder);
-
+char	*get_next_line(int fd);
+char	*ft_clean_reminder(char *reminder);
 
 t_node	*ft_lstnew(int value);
 

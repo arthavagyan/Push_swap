@@ -47,8 +47,8 @@ void	radix_sort(t_args *args)
 	int	size;
 	int	bit;
 
+	max_bits = (ft_strlen("\0"), args->complex = 1, bit = 0, find_max_index_bits(args));
 	select_small_sort(args);
-	max_bits = (ft_strlen("\0"), bit = 0, find_max_index_bits(args));
 	while (bit < max_bits)
 	{
 		i = -1;

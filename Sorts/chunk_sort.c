@@ -108,6 +108,7 @@ void	chunk_sort(t_args *args)
 	int		max_pos;
 	int		i;
 
+	args->medium = 1;
 	select_small_sort(args);
 	i = 1;
 	while (i * i < args->a.size)
