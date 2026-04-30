@@ -16,6 +16,7 @@
 # include <unistd.h>
 # include <stdint.h>
 # include <stdio.h>
+# include "./GetNextLine/get_next_line.h"
 
 typedef struct s_list
 {
@@ -102,6 +103,9 @@ size_t	ft_strlen(const char *s);
 
 char	**ft_split(char const *s, char c);
 char	*ft_strdup(const char *s);
+char    *get_next_line(int fd);
+char    *ft_clean_reminder(char *reminder);
+
 
 t_node	*ft_lstnew(int value);
 
