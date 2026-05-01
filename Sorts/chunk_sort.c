@@ -16,26 +16,26 @@ static void	from_a_to_b_utils(t_args *args, int *mid, int *i, int *range)
 	if (args->a.head->index <= *i)
 	{
 		push(&args->a, &args->b);
-		bench_or_write("pb", &args->benchmark.pa, args->bench);
+		bench_write("pb", &args->benchmark.pa, args->bench);
 		rotate(&args->b);
-		bench_or_write("rb", &args->benchmark.rb, args->bench);
+		bench_write("rb", &args->benchmark.rb, args->bench);
 		(*i)++;
 	}
 	else if (args->a.head->index <= *i + *range)
 	{
 		push(&args->a, &args->b);
-		bench_or_write("pb", &args->benchmark.pa, args->bench);
+		bench_write("pb", &args->benchmark.pa, args->bench);
 		if (args->b.head->index <= *mid)
 		{
 			rotate(&args->b);
-			bench_or_write("rb", &args->benchmark.rb, args->bench);
+			bench_write("rb", &args->benchmark.rb, args->bench);
 		}
 		(*i)++;
 	}
 	else
 	{
 		rotate(&args->a);
-		bench_or_write("ra", &args->benchmark.ra, args->bench);
+		bench_write("ra", &args->benchmark.ra, args->bench);
 	}
 }
 
@@ -87,7 +87,7 @@ static void	max_to_top(t_args *args, int max_pos)
 		while (i < max_pos)
 		{
 			rotate(&args->b);
-			bench_or_write("rb", &args->benchmark.rb, args->bench);
+			bench_write("rb", &args->benchmark.rb, args->bench);
 			i++;
 		}
 	}
@@ -96,7 +96,7 @@ static void	max_to_top(t_args *args, int max_pos)
 		while (i < (args->b.size - max_pos))
 		{
 			reverse_rotate(&args->b);
-			bench_or_write("rrb", &args->benchmark.rrb, args->bench);
+			bench_write("rrb", &args->benchmark.rrb, args->bench);
 			i++;
 		}
 	}
@@ -125,7 +125,7 @@ void	chunk_sort(t_args *args)
 			max_pos = find_max_index(args->b.head);
 			max_to_top(args, max_pos);
 			push(&args->b, &args->a);
-			bench_or_write("pa", &args->benchmark.pa, args->bench);
+			bench_write("pa", &args->benchmark.pa, args->bench);
 		}
 	}
 }

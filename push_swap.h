@@ -16,7 +16,7 @@
 # include <unistd.h>
 # include <stdint.h>
 # include <stdio.h>
-//# include "./GetNextLine/get_next_line.h"
+# include "./GetNextLine/get_next_line.h"
 
 typedef struct s_list
 {
@@ -63,7 +63,7 @@ typedef struct m_data
 	t_stack	b;
 }		t_args;
 
-void	bench_or_write(char *str, int *operation, int bench);
+void	bench_write(char *str, int *operation, int bench);
 void	push(t_stack *src_stack, t_stack *dst_stack);
 void	find_operation(int min_index, t_args *args);
 void	execute_command(char *line, t_args *args);
@@ -95,6 +95,8 @@ void	case2(t_args *args);
 void	case3(t_args *args);
 void	case4(t_args *args);
 void	case5(t_args *args);
+
+void	print_result(t_args *args, int i);
 
 size_t	ft_strlcpy(char dst[], const char src[], size_t size);
 size_t	ft_strlen(const char *s);

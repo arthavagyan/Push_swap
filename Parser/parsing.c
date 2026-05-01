@@ -64,9 +64,6 @@ static void	fill_args(t_args *args)
 
 void	parsing(t_args *args)
 {
-	int	i;
-
-	i = 0;
 	arr_len_counter(args);
 	if (args->total_arr_len == 0)
 		error_exit(0, args);

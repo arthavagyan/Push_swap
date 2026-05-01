@@ -9,7 +9,7 @@
 /*   Updated: 2026/03/29 19:39:56 by tyeghiaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
+#include "../push_swap.h"
 #include "get_next_line.h"
 
 char	*ft_substr(char *s, unsigned int start, size_t len)

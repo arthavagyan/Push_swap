@@ -9,21 +9,8 @@
 /*   Updated: 2026/03/29 19:44:34 by tyeghiaz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
+#include "../push_swap.h"
 #include "get_next_line.h"
-//#include <stdio.h>
-
-size_t	ft_strlen( char *s)
-{
-	size_t	i;
-
-	if (!s)
-		return (0);
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
-}
 
 char	*ft_strchr( char *s, int c)
 {
@@ -43,24 +30,6 @@ char	*ft_strchr( char *s, int c)
 	if (s[i] == (char) c)
 		return (&s[i]);
 	return (NULL);
-}
-
-size_t	ft_strlcpy(char *dst, char *src, size_t size)
-{
-	size_t	src_len;
-	size_t	i;
-
-	src_len = ft_strlen(src);
-	i = 0;
-	if (size == 0)
-		return (src_len);
-	while (src[i] && i < size - 1)
-	{
-		dst[i] = src[i];
-		i++;
-	}
-	dst[i] = '\0';
-	return (src_len);
 }
 
 size_t	ft_strlcat(char *dst, char *src, size_t size)

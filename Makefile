@@ -1,8 +1,10 @@
 NAME = push_swap
-CC = cc
-CFLAGS = -Wall -Wextra -Werror
+BONUSNAME = checker
 
-SRC = ./Helper_functions/bench.c \
+CC = cc
+#CFLAGS = -Wall -Wextra -Werror
+
+COMMON_SRC = ./Helper_functions/bench.c \
 	./Helper_functions/compute_disorder.c \
 	./Helper_functions/duplicate_numbers.c \
 	./Helper_functions/error.c \
@@ -21,25 +23,38 @@ SRC = ./Helper_functions/bench.c \
 	./Sorts/selection_sort.c \
 	./Sorts/small_sort_help.c \
 	./Sorts/small_sort.c \
-	./Sorts/sort_helper_functions.c \
-	push_swap.c 
+	./Sorts/sort_helper_functions.c
 
-OBJ = $(SRC:.c=.o)
+SRC = $(COMMON_SRC) push_swap.c
+OBJS = $(SRC:.c=.o)
 
-all : $(NAME)
+BONUS_SRC = $(COMMON_SRC) \
+	./Checker/checker.c \
+	./Checker/checker_help.c \
+	./GetNextLine/get_next_line.c \
+	./GetNextLine/get_next_line_utils.c
 
-$(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+BONUS_OBJS = $(BONUS_SRC:.c=.o)
+
+all: $(NAME)
+
+$(NAME): $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+
+bonus: $(BONUSNAME)
+
+$(BONUSNAME): $(BONUS_OBJS)
+	$(CC) $(CFLAGS) $(BONUS_OBJS) -o $(BONUSNAME)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-clean : 
-	rm -f  $(OBJ)
+clean:
+	rm -f $(OBJS) $(BONUS_OBJS)
 
-fclean : clean
-	rm -f $(NAME)
+fclean: clean
+	rm -f $(NAME) $(BONUSNAME)
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all bonus clean fclean re
