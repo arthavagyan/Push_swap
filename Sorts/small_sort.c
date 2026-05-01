@@ -16,7 +16,7 @@ void	sort_2(t_args *args)
 	if (args->a.head->value > args->a.head->next->value)
 	{
 		swap(&args->a);
-		bench_write("sa", &args->benchmark.sa, args->bench);
+		bench_write("sa", &args->benchmark.sa);
 	}
 }
 
@@ -50,12 +50,12 @@ void	sort_4_5(t_args *args)
 		min_index = find_min_index(args->a.head);
 		find_operation(min_index, args);
 		push(&args->a, &args->b);
-		bench_write("pb", &args->benchmark.pb, args->bench);
+		bench_write("pb", &args->benchmark.pb);
 	}
 	sort_3(args);
 	while (args->b.size > 0)
 	{
 		push(&args->b, &args->a);
-		bench_write("pa", &args->benchmark.pa, args->bench);
+		bench_write("pa", &args->benchmark.pa);
 	}
 }

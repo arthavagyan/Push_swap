@@ -2,7 +2,7 @@ NAME = push_swap
 BONUSNAME = checker
 
 CC = cc
-#CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 
 COMMON_SRC = ./Helper_functions/bench.c \
 	./Helper_functions/compute_disorder.c \

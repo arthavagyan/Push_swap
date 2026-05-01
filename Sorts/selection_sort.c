@@ -46,7 +46,7 @@ void	find_operation(int min_index, t_args *args)
 		while (i < min_index)
 		{
 			rotate(&args->a);
-			bench_write("ra", &args->benchmark.ra, args->bench);
+			bench_write("ra", &args->benchmark.ra);
 			i++;
 		}
 	}
@@ -56,7 +56,7 @@ void	find_operation(int min_index, t_args *args)
 		while (i < (args->a.size - min_index))
 		{
 			reverse_rotate(&args->a);
-			bench_write("rra", &args->benchmark.rra, args->bench);
+			bench_write("rra", &args->benchmark.rra);
 			i++;
 		}
 	}
@@ -75,12 +75,12 @@ void	selection(t_args *args)
 			min_index = find_min_index(args->a.head);
 			find_operation(min_index, args);
 			push(&args->a, &args->b);
-			bench_write("pb", &args->benchmark.pb, args->bench);
+			bench_write("pb", &args->benchmark.pb);
 		}
 		while (args->b.size > 0)
 		{
 			push(&args->b, &args->a);
-			bench_write("pa", &args->benchmark.pa, args->bench);
+			bench_write("pa", &args->benchmark.pa);
 		}
 	}
 }

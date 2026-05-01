@@ -38,7 +38,7 @@ void	assign_index(t_node *head)
 	}
 }
 
-void	bench_write(char *str, int *operation, int bench)
+void	bench_write(char *str, int *operation)
 {
 	int	i;
 

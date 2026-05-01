@@ -63,8 +63,8 @@ static int	is_char(char *str, t_args *args)
 
 void	check_args_push(t_args *args)
 {
-	int	i;
-	int	nb;
+	int		i;
+	long	nb;
 
 	i = 0;
 	while (args->args_str[i])
@@ -74,11 +74,11 @@ void	check_args_push(t_args *args)
 		else if (is_char(args->args_str[i], args) == 0)
 		{
 			nb = ft_atoi(args->args_str[i]);
-			if (nb == 2147483647)
+			if (nb == 2147483648)
 				error_exit(3, args);
-			if (duplicate_numbers(&args->a, nb))
+			if (duplicate_numbers(&args->a, (int)nb))
 				error_exit(3, args);
-			push_stack(&args->a, nb);
+			push_stack(&args->a, (int)nb);
 		}
 		i++;
 	}

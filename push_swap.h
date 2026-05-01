@@ -63,7 +63,7 @@ typedef struct m_data
 	t_stack	b;
 }		t_args;
 
-void	bench_write(char *str, int *operation, int bench);
+void	bench_write(char *str, int *operation);
 void	push(t_stack *src_stack, t_stack *dst_stack);
 void	find_operation(int min_index, t_args *args);
 void	execute_command(char *line, t_args *args);
@@ -112,7 +112,8 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		duplicate_numbers(t_stack *stack, int value);
 int		find_min_index(t_node *head);
 int		is_sorted(t_stack *stack);
-int		ft_atoi(const char *str);
+
+long		ft_atoi(const char *str);
 
 void	compute_disorder(t_args *args);
 #endif

@@ -31,12 +31,12 @@ static void	find_operation_bit(t_args *args, int bit)
 	if ((args->a.head->index >> bit) & 1)
 	{
 		rotate(&args->a);
-		bench_write("ra", &args->benchmark.ra, args->bench);
+		bench_write("ra", &args->benchmark.ra);
 	}
 	else
 	{
 		push(&args->a, &args->b);
-		bench_write("pb", &args->benchmark.pb, args->bench);
+		bench_write("pb", &args->benchmark.pb);
 	}
 }
 
@@ -62,7 +62,7 @@ bit = 0, find_max_index_bits(args));
 			while (args->b.size)
 			{
 				push(&args->b, &args->a);
-				bench_write("pa", &args->benchmark.pa, args->bench);
+				bench_write("pa", &args->benchmark.pa);
 			}
 			bit++;
 		}

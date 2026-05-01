@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 #include "../push_swap.h"
 
-int	ft_atoi(const char *str)
+long	ft_atoi(const char *str)
 {
 	long	result;
 	int		sign;
@@ -28,7 +28,7 @@ int	ft_atoi(const char *str)
 	{
 		result = (result * 10) + (*str - '0');
 		if ((result * sign) > 2147483647 || (result * sign) < -2147483648)
-			return (2147483647);
+			return (2147483648);
 		str++;
 	}
 	return (result * sign);
