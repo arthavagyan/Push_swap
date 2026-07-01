@@ -93,7 +93,7 @@ Created as part of the 42 Yerevan curriculum.
 
 <div align="center">
 
-  [![GitHub Profile](https://img.shields.io/badge/GitHub-artavagy-181717?style=for-the-badge&logo=github)](https://github.com/artavagy)
-  [![GitHub Profile](https://img.shields.io/badge/GitHub-tyeghiaz-181717?style=for-the-badge&logo=github)](https://github.com/tyeghiaz)
+  [![GitHub Profile](https://img.shields.io/badge/GitHub-artavagy-181717?style=for-the-badge&logo=github)](https://github.com/arthavagyan)
+  [![GitHub Profile](https://img.shields.io/badge/GitHub-tyeghiaz-181717?style=for-the-badge&logo=github)](https://github.com/tatevyeghiazaryan05)
 
 </div>
