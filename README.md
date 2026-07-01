@@ -1,126 +1,99 @@
-*This project has been created as part of the 42 curriculum by artavagy, tyeghiaz*
+# 📈 Push_Swap — The Art of Sorting with Two Stacks
 
-# Push_swap
+<p align="center">
+  <img src="https://img.shields.io/badge/Score-125%2F100-success?style=for-the-badge&logo=42" alt="Score 125/100" />
+  <img src="https://img.shields.io/badge/Language-C-blue?style=for-the-badge&logo=c" alt="Language C" />
+  <img src="https://img.shields.io/badge/Status-Completed-brightgreen?style=for-the-badge" alt="Status Completed" />
+</p>
 
 ---
-## Instructions
 
-### Requirements
-- `cc` compiler with `-Wall -Wextra -Werror` support
+## 📖 Description
 
-### Compilation
+**Push_swap** is a highly efficient C program that sorts data on a stack, using a limited set of instructions, with the lowest possible number of actions. 
 
+You start with two stacks: **Stack A** (full of random numbers) and **Stack B** (empty). The goal is to sort everything into Stack A in ascending order using specific operations like swaps, pushes, and rotations.
+
+---
+
+## 🛠️ Installation & Usage
+
+### ⚙️ Compilation
+To build the project, run:
 ```bash
 make
 ```
----
 
-### Usage
+### 🖥️ Running the Program
+You can use different flags to choose a specific sorting algorithm:
 
 ```bash
-# Basic sorting
+# Basic sorting (using the default adaptive strategy)
 ./push_swap 3 1 4 1 5 9 2 6
 
-# With flags
-./push_swap --simple 3 1 4 
-./push_swap --medium 3 1 4 1 5 9 2 6 
-./push_swap --complex 3 1 4 1 5 9 2 6 5 3
-./push_swap --adaptive 3 1 4 1 5 9   
+# Force a specific algorithm
+./push_swap --simple 3 1 4       # Selection Sort
+./push_swap --medium 3 1 4 1 5   # Chunk Sort
+./push_swap --complex 8 2 4 9 1  # Radix Sort
 
-# Printing Operetions
-./push_swap --bench 3 1 4 1 5 9 2 6
-
-# Running Checker
+# Check if the result is correct (if you have a checker)
 ./push_swap 3 2 1 | ./checker 3 2 1
 ```
 
-### Allowed Operations
-
-| Operation | Description |
-|-----------|-------------|
-| `sa` | Swap the first two elements of stack A |
-| `sb` | Swap the first two elements of stack B |
-| `ss` | Perform `sa` and `sb` simultaneously |
-| `pa` | Push the first element from stack B to stack A |
-| `pb` | Push the first element from stack A to stack B |
-| `ra` | Rotate stack A (first element becomes last) |
-| `rb` | Rotate stack B |
-| `rr` | Rotate both stacks |
-| `rra` | Reverse rotate stack A |
-| `rrb` | Reverse rotate stack B |
-| `rrr` | Reverse rotate both stacks |
-
 ---
-## Algorithms
 
-### Selection Sort — O(n²) (`--simple`)
-*Implemented by tyeghiaz*
+## 🔄 Allowed Operations
 
-A basic comparison-based sorting approach. For every position in stack a, the smallest remaining element is located and rotated to the top before being placed. Easy to understand and implement, though its quadratic growth in operations makes it poorly suited for larger inputs.
-Best suited for: inputs of roughly 3–10 elements where clarity matters more than speed.
+| Op | Description |
+| :--- | :--- |
+| `sa` / `sb` | **Swap** the first two elements of stack A or B. |
+| `ss` | Swap both stacks at the same time. |
+| `pa` / `pb` | **Push** the top element from one stack to another. |
+| `ra` / `rb` | **Rotate** stack (first element becomes last). |
+| `rr` | Rotate both stacks at the same time. |
+| `rra` / `rrb` | **Reverse Rotate** (last element becomes first). |
+| `rrr` | Reverse rotate both stacks at the same time. |
 
 ---
 
-### Chunk Sort — O(n√n) (`--medium`)
-*Implemented by artavagy*
+## 🧠 Sorting Algorithms
 
-Splits the input range into chunks of approximately √n in size. Elements are pushed to stack b by chunk order, then pulled back into stack a. By grouping values that are close together, this approach cuts down on the number of rotations compared to a pure insertion sort.
-Best suited for: medium-sized inputs (~10–100 elements) where a reasonable trade-off between complexity and performance is acceptable.
+My partner (**tyeghiaz**) and I (**artavagy**) implemented several strategies to handle different input sizes:
 
----
+### 🟢 Selection Sort — O(n²) (`--simple`)
 
-### Radix Sort — O(n log n) (`--complex`)
-*Implemented by tyeghiaz*
+Finds the smallest number and moves it to the top. It is very simple and perfect for small sets (3–10 numbers).
 
-Processes integers one bit at a time, starting from the least significant bit and working upward. Each pass distributes elements across stack a and stack b based on the current bit, then recombines them. Since integers are normalized to indices ahead of time, negative numbers are handled without any special cases.
-Best suited for: large inputs (100–500+ elements) where keeping the total operation count low is essential. Radix sort fits push_swap particularly well — it maps naturally to pb/pa operations and yields a consistent, predictable number of moves.
+### 🟡 Chunk Sort — O(n√n) (`--medium`)
 
----
+Splits the numbers into "chunks" (groups). By pushing groups of similar values to Stack B first, we reduce the total number of moves. Best for 10–100 numbers.
 
-### Adaptive Strategy (`--adaptive`, default)
-*Dispatcher implemented as part of project architecture*
+### 🔴 Radix Sort — O(n log n) (`--complex`)
 
-Rather than forcing a single algorithm, the program measures the **disorder** of the input (based on the number of inversions) and selects the most appropriate strategy automatically:
+A bitwise sorting algorithm. It sorts numbers by looking at their binary digits. This is the most consistent and fast method for very large sets (100–500+ numbers).
 
-|         Disorder       | Selected algorithm |
-|------------------------|--------------------|
-|         < 0.2          |    Selection sort  |
-| 0.21 <= disorder < 0.5 |      Chunk sort    |
-|          >= 0.5        |      Radix sort    |
+### ⚡ Adaptive Strategy (`--adaptive`)
+The program automatically calculates the **disorder** (how messy the list is) and picks the best algorithm:
 
-This ensures optimal performance across all input sizes without requiring the user to manually choose a flag.
-
-## Description
-
-Push_swap is a C program that sorts integers using two stacks (a and b) with minimal operations.  
-Stack `a` initially contains a random sequence of positive and/or negative numbers with no duplicates, while stack `b` is empty.  
-The program outputs a sequence of operations to sort stack `a` in ascending order using only the allowed Push_swap operations.
-
+| Disorder Level | Selected Algorithm |
+| :--- | :--- |
+| **Low** (< 0.2) | Selection Sort |
+| **Medium** (0.21 - 0.5) | Chunk Sort |
+| **High** (> 0.5) | Radix Sort |
 
 ---
 
-## Project Goal
+## 👨‍💻 Authors
 
-Sort a stack of integers in ascending order using two stacks while minimizing the number of Push_swap operations.
-Apply different sorting strategies depending on input size and level of disorder:
+This project was a collaboration between:
+- **artavagy**
+- **tyeghiaz**
 
-- --simple — Explicitly runs the Selection Sort O(n²) algorithm.
-- --medium — Explicitly runs the Chunk Sort O(n√n) algorithm.
-- --complex — Explicitly runs the Radix Sort O(n log n) algorithm.
-- --adaptive — Automatically selects a strategy based on how disordered the input is. This is the default behavior.
+Created as part of the 42 Yerevan curriculum.
 
+<div align="center">
 
-Produce a valid sequence of Push_swap operations (sa, sb, ss, pa, pb, ra, rb, rr, rra, rrb, rrr) that sorts the stack as efficiently as possible.
+  [![GitHub Profile](https://img.shields.io/badge/GitHub-artavagy-181717?style=for-the-badge&logo=github)](https://github.com/artavagy)
+  [![GitHub Profile](https://img.shields.io/badge/GitHub-tyeghiaz-181717?style=for-the-badge&logo=github)](https://github.com/tyeghiaz)
 
----
-
-## Resources
-
-### Algorithm References
-
-- 42 push_swap subject PDF
-- Push_swap — Sorting with Two Stacks — A conceptual walkthrough of the problem and common approaches.
-- 42 Push_swap Docs — Official-style breakdown of the rules and available operations.
-- Chunk Sort for Push_swap — Detailed explanation of the chunk-based sorting strategy.
-- Radix Sort — GeeksforGeeks — Reference for the bitwise radix sort algorithm.
-- Selection Sort — GeeksforGeeks — Reference for the selection sort algorithm.
+</div>
